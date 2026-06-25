@@ -499,26 +499,50 @@ systemData.dailyEntries[
 systemData.dailyEntries.length-1
 ];
 
+
 let reportText="";
 
-reportText+="🌿 تقرير الحلقة اليومي 🌿\n";
-reportText+="═══════════════\n\n";
+reportText+="\n";
+reportText+="  ❖◎تقرير اليوم❖◎  \n";
+reportText+="═══ °❖◎📖◎❖°═══\n";
 
-reportText+=`📅 ${report.date}\n`;
+reportText+="المدرســــة القرآنيــــة الوقفيــــة بولاية العامرات\n";
 
-reportText+="🏫 المدرسة الوقفية\n";
+reportText+=`❖◎${systemData.teacher.halaqaName}❖◎\n`;
 
-reportText+="📖 الدورة المكثفة لحفظ القرآن الكريم\n";
+reportText+="═══ °❖◎📖◎❖°═══\n";
 
-reportText+=`📆 الأسبوع ${systemData.currentWeek}\n\n`;
+reportText+=`الأسبوع ${systemData.currentWeek}\n`;
 
-reportText+=`👤 المعلم: ${systemData.teacher.teacherName}\n`;
+reportText+=`اليوم: ${report.date}\n`;
 
-reportText+="═══════════════\n\n";
+reportText+=`معلم الحلقة: ${systemData.teacher.teacherName}\n`;
 
-report.entries.forEach(item=>{
+if(report.notes){
 
-reportText+=`📌 ${item.studentName}\n\n`;
+reportText+="\n";
+reportText+="📌\n";
+reportText+="═══ °❖◎📖◎❖°═══\n";
+reportText+=report.notes+"\n";
+
+}
+
+reportText+="\n";
+reportText+="═══ °❖◎📖◎❖°═══\n";
+
+report.entries.forEach((item,index)=>{
+
+reportText+=`${index+1}- ${item.studentName}`;
+
+if(item.attendance==="غائب"){
+
+reportText+=" (ع)\n\n";
+
+}else{
+
+reportText+="\n\n";
+
+}
 
 if(item.attendance==="غائب"){
 
@@ -537,11 +561,13 @@ reportText+=`${item.nextSura || "-"} ${item.nextFrom || ""}${item.nextTo ? "-"+i
 
 }
 
-reportText+="───────────────\n\n";
+reportText+="═══ °❖◎ ◎❖°═══\n";
 
 });
 
-reportText+="🌱 بارك الله في أبنائنا وزادهم حفظاً وإتقاناً";
+reportText+="\n";
+reportText+="بارك الله في الجهود المبذولة وفتح الله على الجميع فتحاً مبيناً\n";
+reportText+="ومزيداً من التقدم والنجاح";
 
 navigator.clipboard.writeText(reportText);
 
