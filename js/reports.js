@@ -224,20 +224,16 @@ ${studentsHtml}
 
 <div class="buttons-column">
 
-<button id="shareWhatsappBtn"
-
-class="btn-wa">
-
-📤 مشاركة واتساب
-
+<button id="shareWhatsappBtn" class="btn-wa">
+📤 تقرير مصور
 </button>
 
-<button id="backBtn"
+<button id="shareTextReportBtn" class="btn-text">
+📝 تقرير نصي
+</button>
 
-class="btn-back">
-
+<button id="backBtn" class="btn-back">
 ⬅️ رجوع
-
 </button>
 
 </div>
@@ -255,6 +251,10 @@ document.getElementById(
 ).onclick=
 
 renderDashboard;
+document.getElementById(
+"shareTextReportBtn"
+).onclick=
+shareTextReport;
 
 document.getElementById(
 
@@ -490,6 +490,62 @@ alert(
 );
 
 }
+
+}
+function shareTextReport(){
+
+const report=
+systemData.dailyEntries[
+systemData.dailyEntries.length-1
+];
+
+let reportText="";
+
+reportText+="🌿 تقرير الحلقة اليومي 🌿\n";
+reportText+="═══════════════\n\n";
+
+reportText+=`📅 ${report.date}\n`;
+
+reportText+="🏫 المدرسة الوقفية\n";
+
+reportText+="📖 الدورة المكثفة لحفظ القرآن الكريم\n";
+
+reportText+=`📆 الأسبوع ${systemData.currentWeek}\n\n`;
+
+reportText+=`👤 المعلم: ${systemData.teacher.teacherName}\n`;
+
+reportText+="═══════════════\n\n";
+
+report.entries.forEach(item=>{
+
+reportText+=`📌 ${item.studentName}\n\n`;
+
+if(item.attendance==="غائب"){
+
+reportText+="🔴 غائب\n\n";
+
+}else{
+
+reportText+=`📖 الحفظ\n`;
+reportText+=`${item.saveSura || "-"} ${item.saveFrom || ""}${item.saveTo ? "-"+item.saveTo : ""}\n\n`;
+
+reportText+=`🔄 المراجعة\n`;
+reportText+=`${item.reviewSura || "-"} ${item.reviewFrom || ""}${item.reviewTo ? "-"+item.reviewTo : ""}\n\n`;
+
+reportText+=`⏭️ القادم\n`;
+reportText+=`${item.nextSura || "-"} ${item.nextFrom || ""}${item.nextTo ? "-"+item.nextTo : ""}\n\n`;
+
+}
+
+reportText+="───────────────\n\n";
+
+});
+
+reportText+="🌱 بارك الله في أبنائنا وزادهم حفظاً وإتقاناً";
+
+navigator.clipboard.writeText(reportText);
+
+alert("✅ تم نسخ التقرير النصي");
 
 }
 
