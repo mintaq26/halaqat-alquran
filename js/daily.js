@@ -283,23 +283,24 @@ class="header-logo">
 type="date"
 
 id="dailyDate">
-
-<br><br>
-
+<br>
 ${cards}
 <div class="report-notes-box">
 
-<label>
 
-📝 ملاحظات التقرير (اختياري)
 
+<div class="notes-box">
+
+<label class="notes-label">
+📝 ملاحظات المعلم
 </label>
 
 <textarea
 id="reportNotes"
-rows="3"
-placeholder="مثال: درس التجويد: أحكام المدود">
+class="report-notes">
 </textarea>
+
+</div>
 
 </div>
 <button id="saveDailyBtn">
@@ -672,6 +673,11 @@ day=>day.date===today
 if(existingIndex>=0){
 
 systemData.dailyEntries[existingIndex].entries=entries;
+
+systemData.dailyEntries[existingIndex].notes=
+document.getElementById(
+"reportNotes"
+)?.value || "";
 
 }
 
@@ -1098,7 +1104,10 @@ const report =
 systemData.dailyEntries[
 systemData.dailyEntries.length - 1
 ];
-
+alert("الملاحظة = " + report.notes);
+alert(
+JSON.stringify(report,null,2)
+);
 let text = "";
 
 text += "📄 تقرير الحلقة\n";
