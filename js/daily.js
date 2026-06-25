@@ -287,7 +287,21 @@ id="dailyDate">
 <br><br>
 
 ${cards}
+<div class="report-notes-box">
 
+<label>
+
+📝 ملاحظات التقرير (اختياري)
+
+</label>
+
+<textarea
+id="reportNotes"
+rows="3"
+placeholder="مثال: درس التجويد: أحكام المدود">
+</textarea>
+
+</div>
 <button id="saveDailyBtn">
 
 💾 حفظ اليوم
@@ -667,7 +681,12 @@ systemData.dailyEntries.push({
 
 date:today,
 
-entries:entries
+entries:entries,
+
+notes:
+document.getElementById(
+"reportNotes"
+)?.value || ""
 
 });
 
@@ -1088,6 +1107,12 @@ text += "━━━━━━━━━━━━━━\n\n";
 text += "📅 التاريخ: " + report.date + "\n";
 text += "👤 المعلم: " + systemData.teacher.teacherName + "\n";
 text += "📚 الحلقة: " + systemData.teacher.halaqaName + "\n\n";
+
+if(report.notes){
+
+text += report.notes + "\n\n";
+
+}
 
 text += "👥 أسماء الطلبة:\n";
 text += "━━━━━━━━━━━━━━\n\n";
