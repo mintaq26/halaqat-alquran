@@ -533,7 +533,7 @@ reportText+=`${index+1}- ${item.studentName}`;
 
 if(item.attendance==="غائب"){
 
-/* reportText+=" (ع)\n"; */
+
  
 }else{
 
