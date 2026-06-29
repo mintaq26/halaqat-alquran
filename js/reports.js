@@ -172,13 +172,11 @@ class="report-logo">
 
 <div class="report-title">
 
-الدورة المكثفة
-
+تقارير حلقات 
 </div>
 
 <div class="report-subtitle">
-
-لحفظ القرآن الكريم
+ القرآن الكريم
 
 </div>
 
@@ -535,8 +533,8 @@ reportText+=`${index+1}- ${item.studentName}`;
 
 if(item.attendance==="غائب"){
 
-reportText+=" (ع)\n";
-
+/* reportText+=" (ع)\n"; */
+ 
 }else{
 
 reportText+="\n";
