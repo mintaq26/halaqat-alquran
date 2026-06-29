@@ -502,7 +502,6 @@ systemData.dailyEntries.length-1
 
 let reportText="";
 
-reportText+="\n";
 reportText+="  ❖◎تقرير اليوم❖◎  \n";
 reportText+="═══ °❖◎📖◎❖°═══\n";
 
@@ -512,22 +511,22 @@ reportText+=`❖◎${systemData.teacher.halaqaName}❖◎\n`;
 
 reportText+="═══ °❖◎📖◎❖°═══\n";
 
-reportText+=`الأسبوع ${systemData.currentWeek}\n`;
+/* reportText+=`الأسبوع ${systemData.currentWeek}\n`; */
 
 reportText+=`اليوم: ${report.date}\n`;
 
 reportText+=`معلم الحلقة: ${systemData.teacher.teacherName}\n`;
 
 if(report.notes){
-
-reportText+="\n";
-reportText+="📌\n";
+ 
+/* reportText+="\n"; */
+/* reportText+="📌\n"; */
 reportText+="═══ °❖◎📖◎❖°═══\n";
 reportText+=report.notes+"\n";
 
 }
 
-reportText+="\n";
+/* reportText+="\n";  */
 reportText+="═══ °❖◎📖◎❖°═══\n";
 
 report.entries.forEach((item,index)=>{
@@ -536,28 +535,28 @@ reportText+=`${index+1}- ${item.studentName}`;
 
 if(item.attendance==="غائب"){
 
-reportText+=" (ع)\n\n";
+reportText+=" (ع)\n";
 
 }else{
 
-reportText+="\n\n";
+reportText+="\n";
 
 }
 
 if(item.attendance==="غائب"){
 
-reportText+="🔴 غائب\n\n";
+reportText+="🔴 غائب\n";
 
 }else{
 
 reportText+=`📖 الحفظ\n`;
-reportText+=`${item.saveSura || "-"} ${item.saveFrom || ""}${item.saveTo ? "-"+item.saveTo : ""}\n\n`;
+reportText+=`${item.saveSura || "-"} ${item.saveFrom || ""}${item.saveTo ? "-"+item.saveTo : ""}\n`;
 
 reportText+=`🔄 المراجعة\n`;
-reportText+=`${item.reviewSura || "-"} ${item.reviewFrom || ""}${item.reviewTo ? "-"+item.reviewTo : ""}\n\n`;
+reportText+=`${item.reviewSura || "-"} ${item.reviewFrom || ""}${item.reviewTo ? "-"+item.reviewTo : ""}\n`;
 
 reportText+=`⏭️ القادم\n`;
-reportText+=`${item.nextSura || "-"} ${item.nextFrom || ""}${item.nextTo ? "-"+item.nextTo : ""}\n\n`;
+reportText+=`${item.nextSura || "-"} ${item.nextFrom || ""}${item.nextTo ? "-"+item.nextTo : ""}\n`;
 
 }
 
@@ -565,7 +564,7 @@ reportText+="═══ °❖◎ ◎❖°═══\n";
 
 });
 
-reportText+="\n";
+/* reportText+="\n"; */
 reportText+="بارك الله في الجهود المبذولة وفتح الله على الجميع فتحاً مبيناً\n";
 reportText+="ومزيداً من التقدم والنجاح";
 
